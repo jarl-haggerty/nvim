@@ -14,6 +14,10 @@ return require('packer').startup(function(use)
       run = ':TSUpdate'
   }
 
+  use {
+    "williamboman/mason.nvim"
+  }
+
   --use {
   --  'VonHeikemen/lsp-zero.nvim',
   --  branch = 'v2.x',
@@ -36,4 +40,11 @@ return require('packer').startup(function(use)
   --}
 
   use 'mfussenegger/nvim-dap'
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
 end)
