@@ -47,6 +47,18 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
+local cmp = require'cmp'
+
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  },
+  mapping = cmp.mapping.preset.insert()
+}
+
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
 	callback = function()
@@ -60,6 +72,7 @@ vim.api.nvim_create_autocmd("FileType", {
       name = 'pyright',
       cmd = {'pyright-langserver', '--stdio'},
       root_dir = vim.fs.dirname(vim.fs.find({'setup.py', 'pyproject.toml'}, { upward = true })[1]),
+      capabilities = capabilities,
     })
 	end
 })
@@ -77,6 +90,7 @@ vim.api.nvim_create_autocmd("FileType", {
       name = 'clangd',
       cmd = {'clangd'},
       root_dir = vim.fs.dirname(vim.fs.find({'CMakeLists.txt'}, { upward = true })[1]),
+      capabilities = capabilities,
     })
 	end
 })

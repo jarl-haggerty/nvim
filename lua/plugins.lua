@@ -47,4 +47,7 @@ return require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons', -- optional
     },
   }
+
+  use {'hrsh7th/nvim-cmp'}     -- Required
+  use {'hrsh7th/cmp-nvim-lsp'} -- Required
 end)
