@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.cmd("colorscheme desert")
+vim.cmd("colorscheme slate")
 vim.opt.colorcolumn = "119"
 vim.opt.hlsearch = true
 vim.wo.number = true
@@ -55,6 +55,18 @@ cmp.setup {
   },
   mapping = cmp.mapping.preset.insert()
 }
+
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, {})
+vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, {})
+vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, {})
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {})
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {})
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {})
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {})
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
