@@ -142,6 +142,7 @@ dap.configurations.python = {
 		request="launch";
 		name="thalamus";
 		module="bmbi.thalamus";
+    args={"--config", "task_controller_config.json"}
 	}
 }
 
@@ -153,14 +154,23 @@ dap.adapters.cppdbg = {
     detached = false
   }
 }
+
+dap.adapters.lldb = {
+  id = 'lldb',
+  type = 'executable',
+  command = 'C:\\Program Files\\LLVM\\bin\\lldb-vscode',
+  name = 'lldb'
+}
+
 dap.configurations.cpp = {
   {
-    name = 'Attach',
-    type = 'cppdbg',
-    request = 'attach',
-    processId = function() return vim.fn.input("PID:") end,
-    miDebuggerPath = 'gdb',
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
     cwd = '${workspaceFolder}',
-    program = "C:\\bmbi\\bmbi\\bmbi_native.exe"
+    program = "C:\\bmbi\\bmbi\\bmbi_native.exe",
+    args = {"thalamus", "--slave"},
+    stopOnEntry = false,
+    runInTerminal = true
   },
 }
