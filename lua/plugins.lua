@@ -50,4 +50,5 @@ return require('packer').startup(function(use)
 
   use {'hrsh7th/nvim-cmp'}     -- Required
   use {'hrsh7th/cmp-nvim-lsp'} -- Required
+  use {'folke/trouble.nvim'}
 end)
